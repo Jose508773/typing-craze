@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Craze</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Typing Craze</h1>
+    <p class="subtitle">Test your typing speed!</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span id="wpm">0</span>
+        <label>WPM</label>
+      </div>
+      <div class="stat">
+        <span id="accuracy">100</span>
+        <label>Accuracy %</label>
+      </div>
+      <div class="stat">
+        <span id="timer">60</span>
+        <label>Seconds</label>
+      </div>
+    </div>
+
+    <div id="prompt-box">
+      <div id="prompt"></div>
+    </div>
+
+    <textarea
+      id="input"
+      placeholder="Click here and start typing..."
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+    ></textarea>
+
+    <button id="restart-btn">Restart</button>
+
+    <div id="result" class="hidden">
+      <h2>Results</h2>
+      <p>WPM: <strong id="final-wpm"></strong></p>
+      <p>Accuracy: <strong id="final-accuracy"></strong>%</p>
+      <button id="play-again-btn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
