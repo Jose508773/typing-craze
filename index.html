@@ -4,49 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Typing Craze</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Ambient background orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
   <div class="container">
-    <h1>Typing Craze</h1>
-    <p class="subtitle">Test your typing speed!</p>
 
-    <div class="stats">
-      <div class="stat">
-        <span id="wpm">0</span>
-        <label>WPM</label>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">⌨</span>
+        <h1>Typing<span class="accent">Craze</span></h1>
       </div>
-      <div class="stat">
-        <span id="accuracy">100</span>
-        <label>Accuracy %</label>
+      <p class="subtitle">How fast can you really type?</p>
+    </header>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <span id="wpm" class="stat-value">0</span>
+        <span class="stat-label">WPM</span>
       </div>
-      <div class="stat">
-        <span id="timer">60</span>
-        <label>Seconds</label>
+      <div class="stat-divider"></div>
+      <div class="stat-card">
+        <span id="accuracy" class="stat-value">100</span>
+        <span class="stat-label">Accuracy %</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-card timer-card">
+        <span id="timer" class="stat-value">60</span>
+        <span class="stat-label">Seconds</span>
+        <div class="timer-bar-track">
+          <div id="timer-bar" class="timer-bar-fill"></div>
+        </div>
       </div>
     </div>
 
+    <!-- Prompt box -->
     <div id="prompt-box">
+      <div class="prompt-fade-left"></div>
       <div id="prompt"></div>
+      <div class="prompt-fade-right"></div>
     </div>
 
-    <textarea
-      id="input"
-      placeholder="Click here and start typing..."
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-    ></textarea>
+    <!-- Input area -->
+    <div class="input-wrapper">
+      <textarea
+        id="input"
+        placeholder="Start typing to begin the test..."
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      ></textarea>
+      <span class="input-hint">Press <kbd>Tab</kbd> to restart</span>
+    </div>
 
-    <button id="restart-btn">Restart</button>
+    <!-- Restart button -->
+    <div class="controls">
+      <button id="restart-btn" title="Restart (Tab)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.6"/></svg>
+        Restart
+      </button>
+    </div>
 
+    <!-- Result card -->
     <div id="result" class="hidden">
-      <h2>Results</h2>
-      <p>WPM: <strong id="final-wpm"></strong></p>
-      <p>Accuracy: <strong id="final-accuracy"></strong>%</p>
+      <div class="result-header">
+        <div class="result-icon">🏁</div>
+        <h2>Test Complete</h2>
+      </div>
+      <div class="result-stats">
+        <div class="result-stat">
+          <span id="final-wpm" class="result-value">0</span>
+          <span class="result-label">Words / Min</span>
+        </div>
+        <div class="result-stat">
+          <span id="final-accuracy" class="result-value">0</span>
+          <span class="result-label">Accuracy %</span>
+        </div>
+      </div>
       <button id="play-again-btn">Play Again</button>
     </div>
+
   </div>
 
   <script src="game.js"></script>

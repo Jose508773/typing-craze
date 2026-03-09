@@ -23,6 +23,7 @@ const finalWpmEl  = document.getElementById('final-wpm');
 const finalAccEl  = document.getElementById('final-accuracy');
 const restartBtn  = document.getElementById('restart-btn');
 const playAgainBtn = document.getElementById('play-again-btn');
+const timerBar    = document.getElementById('timer-bar');
 
 let words = [];
 let charIndex = 0;       // global char index
@@ -108,6 +109,9 @@ function startTimer() {
   timerInterval = setInterval(() => {
     timeLeft--;
     timerEl.textContent = timeLeft;
+    const pct = (timeLeft / GAME_DURATION) * 100;
+    timerBar.style.width = pct + '%';
+    timerBar.className = 'timer-bar-fill' + (pct <= 16 ? ' danger' : pct <= 33 ? ' warning' : '');
     updateStats();
     if (timeLeft <= 0) {
       endGame();
@@ -196,6 +200,8 @@ function initGame() {
   correctTyped = 0;
 
   timerEl.textContent = GAME_DURATION;
+  timerBar.style.width = '100%';
+  timerBar.className = 'timer-bar-fill';
   wpmEl.textContent = '0';
   accuracyEl.textContent = '100';
 
@@ -211,9 +217,12 @@ inputEl.addEventListener('input', handleInput);
 restartBtn.addEventListener('click', initGame);
 playAgainBtn.addEventListener('click', initGame);
 
-// Prevent tab from leaving the textarea
+// Tab restarts the game; prevent focus loss
 inputEl.addEventListener('keydown', (e) => {
-  if (e.key === 'Tab') e.preventDefault();
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    initGame();
+  }
 });
 
 // Init on load
