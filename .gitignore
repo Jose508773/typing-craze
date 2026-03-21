@@ -1,2 +1,4 @@
+startup-pitch-coach-site/node_modules/
+startup-pitch-coach-site/.env
 node_modules/
 .env
