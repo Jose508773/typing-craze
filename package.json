@@ -1,0 +1,15 @@
+{
+  "name": "startup-pitch-coach",
+  "version": "1.0.0",
+  "description": "AI-powered startup pitch coach using Gemini",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "@google/generative-ai": "^0.21.0"
+  }
+}

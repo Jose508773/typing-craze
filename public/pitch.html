@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Startup Pitch Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pitch.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">Pitch Coach</div>
+        <p class="tagline">AI-powered startup analysis by an experienced mentor</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Input Section -->
+      <section class="input-section" id="input-section">
+        <div class="card">
+          <label class="section-label" for="idea-input">Describe Your Startup Idea</label>
+          <p class="input-hint">Include what your product does, who it's for, and how you plan to make money.</p>
+          <textarea
+            id="idea-input"
+            class="idea-textarea"
+            placeholder="Describe your startup idea..."
+            rows="6"
+          ></textarea>
+          <div class="input-actions">
+            <button class="btn-primary" id="analyze-btn" onclick="submitIdea()">
+              Analyze My Idea
+            </button>
+            <button class="btn-secondary" id="reset-btn" onclick="resetSession()" style="display:none;">
+              Start Over
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading State -->
+      <section class="loading-section" id="loading-section" style="display:none;">
+        <div class="skeleton-wrapper">
+          <div class="skeleton-card">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line medium"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line medium"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clarifying Questions -->
+      <section class="clarifying-section" id="clarifying-section" style="display:none;">
+        <div class="card clarifying-card">
+          <div class="section-label">Before I analyze your idea...</div>
+          <p class="clarifying-intro">I need a few more details to give you a useful analysis. Please answer the following:</p>
+          <ul class="questions-list" id="questions-list"></ul>
+          <textarea
+            id="clarifying-input"
+            class="idea-textarea"
+            placeholder="Answer the questions above..."
+            rows="5"
+          ></textarea>
+          <div class="input-actions">
+            <button class="btn-primary" onclick="submitClarification()">Continue Analysis</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Error State -->
+      <div class="error-banner" id="error-banner" style="display:none;">
+        <span id="error-text"></span>
+      </div>
+
+      <!-- Analysis Results -->
+      <section class="results-section" id="results-section" style="display:none;">
+        <div class="results-header">
+          <h2 class="results-title">Pitch Analysis</h2>
+          <p class="results-sub">Based on your idea. Be honest with yourself about the tough questions below.</p>
+        </div>
+
+        <!-- Core Problem -->
+        <div class="card result-card" id="card-problem">
+          <div class="card-label">01 &mdash; Core Problem</div>
+          <div class="card-body" id="content-problem"></div>
+        </div>
+
+        <!-- Target Audience -->
+        <div class="card result-card" id="card-audience">
+          <div class="card-label">02 &mdash; Target Audience</div>
+          <div class="card-body" id="content-audience"></div>
+        </div>
+
+        <!-- Proposed Solution -->
+        <div class="card result-card" id="card-solution">
+          <div class="card-label">03 &mdash; Proposed Solution</div>
+          <div class="card-body" id="content-solution"></div>
+          <div class="uvp-box" id="content-uvp"></div>
+        </div>
+
+        <!-- Lean Plan -->
+        <div class="card result-card" id="card-lean">
+          <div class="card-label">04 &mdash; Lean Plan</div>
+          <ul class="lean-list" id="content-lean"></ul>
+        </div>
+
+        <!-- VC Questions -->
+        <div class="card result-card" id="card-vc">
+          <div class="card-label">05 &mdash; Tough VC Questions</div>
+          <div class="vc-list" id="content-vc"></div>
+        </div>
+
+        <!-- Pitch Deck -->
+        <div class="card result-card" id="card-deck">
+          <div class="card-label">06 &mdash; Pitch Deck Outline</div>
+          <div class="deck-list" id="content-deck"></div>
+        </div>
+
+        <div class="results-footer">
+          <button class="btn-primary" onclick="resetSession()">Analyze Another Idea</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Startup Pitch Coach &mdash; Honest feedback, not flattery.</p>
+    </footer>
+  </div>
+
+  <script src="pitch.js"></script>
+</body>
+</html>
